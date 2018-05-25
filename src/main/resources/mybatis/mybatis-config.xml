@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD SQL Map Config 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<settings> 
+  		<setting name="cacheEnabled" value="true" /><!-- 全局映射器启用缓存 -->
+        <setting name="useGeneratedKeys" value="true" /> 
+        <setting name="defaultExecutorType" value="REUSE" /> 
+        <!-- 当返回数据类型为map，设置callSettersOnNulls会把值为null的key也返回 -->
+        <setting name="callSettersOnNulls" value="true"/>  
+    </settings>
+
+	<!--<typeAliases>
+		<typeAlias type="com.xmrbi.iparking.entity.system.User" alias="User"/>
+		<typeAlias type="com.xmrbi.iparking.entity.system.Role" alias="Role"/>
+		<typeAlias type="com.xmrbi.iparking.entity.system.Menu" alias="Menu"/>
+		<typeAlias type="com.xmrbi.iparking.entity.sys.SysTabColDic" alias="SysTabColDic"/>
+		<typeAlias type="com.xmrbi.iparking.entity.ent.EntEntinfo" alias="EntEntinfo"/>
+		<typeAlias type="com.xmrbi.iparking.entity.ent.EntUserinfo" alias="EntUserinfo"/>
+		<typeAlias type="com.xmrbi.iparking.entity.sys.SysAppUser" alias="SysAppUser"/>
+		<typeAlias type="com.xmrbi.iparking.entity.sys.SysUser" alias="SysUser"/>
+		<typeAlias type="com.xmrbi.iparking.entity.sys.SysMenu" alias="SysMenu"/>
+		<typeAlias type="com.xmrbi.iparking.entity.par.ParParkinfo" alias="ParParkinfo"/>
+		<typeAlias type="com.xmrbi.iparking.entity.am.AmActetcvehicle" alias="AmActetcvehicle"/>
+		
+		
+		<typeAlias type="com.xmrbi.iparking.entity.cp.CpBatch" alias="CpBatch"/>
+		
+		
+		<typeAlias type="com.xmrbi.iparking.enterprise.util.PageData" alias="pd"/>
+		<typeAlias type="com.xmrbi.iparking.entity.vo.ParkVo" alias="parkVo"/>
+		&lt;!&ndash; 分页 &ndash;&gt;
+		<typeAlias type="com.xmrbi.iparking.entity.Page" alias="Page"/>
+	</typeAliases>
+	
+	<plugins>
+		<plugin interceptor="com.xmrbi.iparking.enterprise.plugin.PagePlugin">
+			<property name="dialect" value="oracle"/>
+			<property name="pageSqlId" value=".*listPage.*"/>
+		</plugin>
+	</plugins>-->
+	
+</configuration>

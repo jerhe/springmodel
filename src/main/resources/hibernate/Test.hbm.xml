@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.jerhe.model.entity.Test" table="test" schema="spimax">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="value" type="java.lang.String">
+            <column name="value" length="64" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
