@@ -1,0 +1,10 @@
+#set($contextPath = $rc.contextPath)
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="$contextPath/resources/styles/h5/common/meta.min.css">
+<script>
+	var contextPath = "$contextPath";
+	var imgHost = "$imgHost";
+</script>
+<script src="$contextPath/resources/js/commons.js"></script>
+<script src="$contextPath/resources/js/h5/common/meta.min.js"></script>

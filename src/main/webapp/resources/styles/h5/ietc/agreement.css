@@ -1,0 +1,21 @@
+.wrap {
+  padding: 0 0.58667rem; }
+  .wrap h3 {
+    font-size: 0.53333rem;
+    color: #888;
+    margin: 0.56rem 0px 0.42667rem 0px;
+    text-align: center;
+    font-weight: normal; }
+  .wrap .agreenmen-info {
+    font-size: 0.37333rem;
+    color: #000;
+    line-height: 0.6rem; }
+    .wrap .agreenmen-info dd {
+      text-indent: 2em; }
+    .wrap .agreenmen-info dt {
+      margin-top: 1.25333rem; }
+  .wrap .agreenment-desc {
+    text-indent: 2em;
+    font-size: 0.37333rem;
+    color: #000;
+    line-height: 0.6rem; }

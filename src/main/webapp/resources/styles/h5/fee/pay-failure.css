@@ -1,0 +1,12 @@
+.pay-failure-wrap {
+  margin: 1rem auto 0 auto;
+  padding-bottom: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #dfe2e2; }
+  .pay-failure-wrap img {
+    width: 3.05333rem; }
+
+.pay-failure-info {
+  margin: 0.53333rem 1.2rem 0 1.2rem;
+  color: #9b9b9b;
+  font-size: 0.37333rem; }

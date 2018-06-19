@@ -116,4 +116,115 @@
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
     </aop:config>
 
+    <!--过滤器-->
+    <!--<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" />
+        <property name="loginUrl" value="/api/pri/login" />
+        <property name="successUrl" value="/main/index" />
+        <property name="unauthorizedUrl" value="/api/pri/login" />
+        <property name="filters">
+            <map>
+                <entry key="urlValidate">
+                    <bean class="com.xmrbi.iparking.api.app.shiro.filter.UrlValidateFilter" />
+                </entry>
+                <entry key="authc">
+                    <bean class="com.xmrbi.iparking.api.app.shiro.filter.AuthcFilter" />
+                </entry>
+                <entry key="systemMaintenUrlValidate">
+                    <bean class="com.xmrbi.iparking.api.app.shiro.filter.SystemMaintenUrlValidateFilter" />
+                </entry>
+                <entry key="authcWechat">
+                    <bean class="com.xmrbi.iparking.api.app.shiro.filter.AuthcWechatFilter">
+                        <property name="loginUri" value="/wx/login/login" />
+                    </bean>
+                </entry>
+                <entry key="authcWechatEnhance">
+                    <bean
+                            class="com.xmrbi.iparking.api.app.shiro.filter.AuthcWechatEnhanceFilter" />
+                </entry>
+                <entry key="authcWechatFromJfc">
+                    <bean
+                            class="com.xmrbi.iparking.api.app.shiro.filter.AuthcWechatFromJfcFilter" />
+                </entry>
+                <entry key="authcWechatShare">
+                    <bean class="com.xmrbi.iparking.api.app.shiro.filter.AuthcWechatShareFilter" />
+                </entry>
+                <entry key="authcOpenId">
+                    <bean class="com.xmrbi.iparking.api.app.shiro.filter.AuthcOpenIdFilter" />
+                </entry>
+                <entry key="authcAli">
+                    <bean class="com.xmrbi.iparking.api.app.shiro.filter.AuthcAliFilter">
+                        <property name="loginUri" value="/ali/login/login" />
+                    </bean>
+                </entry>
+                <entry key="authcAliEnhance">
+                    <bean
+                            class="com.xmrbi.iparking.api.app.shiro.filter.AuthcAliEnhanceFilter" />
+                </entry>
+                <entry key="authcAliUserId">
+                    <bean class="com.xmrbi.iparking.api.app.shiro.filter.AuthcAliUserIdFilter" />
+                </entry>
+            </map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                / = anon
+                /*.jsp = anon
+                /interior/cnd/** = anon
+                /interior/icar/** = anon
+                /interior/session/** = anon
+                /commom/ueditor/** = anon
+                /pub/plug/** = anon
+                /pub/activity/** = urlValidate
+                /pub/page/**/** = anon
+                /pub/scan/** = anon
+                /pub/msg/** = anon
+                /pub/wechat/** = anon
+                /pub/ebs/** = anon
+                /pub/tax/** = anon
+                /pri/ietc/pay/** = anon
+                /pub/** = anon
+                /pri/** = urlValidate,authc
+                /wx/login/** = anon
+                /favicon.ico = anon
+                /code = anon
+                /wx/jfc/** = authcWechatFromJfc
+                /wx/p/pay/fixCodeVoucherPage = authcWechatEnhance
+                /wx/p/pay/toRedirectPage = authcWechatEnhance
+                /wx/p/pay/toVoucherPageEnhance = authcWechatEnhance
+                /wx/p/pay/toAddCarJudge = authcWechatEnhance
+                /wx/p/pay/toPayPageEnhance = urlValidate,authcWechatEnhance
+                /wx/p/pay/bindVirtualPlate = urlValidate,authcWechatEnhance
+                /wx/p/pay/goReservePay = authcWechatEnhance
+                /wx/p/pay/goIlifePay = authcWechatEnhance
+                /wx/p/activity/** =authcWechatShare
+                /wx/p/marketing/showMarketing = authcWechatEnhance
+                /wx/p/** = urlValidate,authcWechatFromJfc,authcWechat
+                /wx/d/activity/** =anon
+                /wx/d/** = authcOpenId
+                /wx/j/** = authcOpenId
+                /ali/login/** = anon
+                /ali/cityservice/** = urlValidate,authcAliEnhance
+                /ali/p/pay/toVoucherPageEnhance = authcAliEnhance
+                /ali/p/pay/toPayPageEnhance = urlValidate,authcAliEnhance
+                /ali/p/pay/toAddCarJudge = authcAliEnhance
+                /ali/p/pay/toRedirectPage = authcAliEnhance
+                /ali/p/pay/alipayNoService = anon
+                /ali/p/pay/fixCodeVoucherPage = authcAliEnhance
+                /ali/d/pay/verifyPark = authcAliEnhance
+                /ali/p/** = urlValidate,authcAli
+                /ali/d/** = authcAliUserId
+                /ali/j/** = authcAliUserId
+                /resources/** = anon
+                /pay/pub/** = anon
+                /pay/pri/** = urlValidate,authc
+                /pay/callback/** = anon
+                /cloud/** = urlValidate
+                /teld/teldplat/** = anon
+                /invoice/igs/** = anon
+                /** = urlValidate,authc
+            </value>
+        </property>
+    </bean>-->
+    
 </beans>

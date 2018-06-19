@@ -47,9 +47,55 @@
     <mvc:resources mapping="/resources/**" location="/static/"/>
 
     <!-- 对模型视图名称的解析,即在模型视图名称添加前后缀 -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
+    </bean>-->
+
+    <bean id="velocityConfig"  class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/vtl/" />
+        <property name="velocityProperties">
+            <props>
+                <prop key="directive.foreach.counter.name">loopCounter</prop>
+                <prop key="directive.foreach.counter.initial.value">0</prop>
+                <prop key="input.encoding">UTF-8</prop>
+                <prop key="output.encoding">UTF-8</prop>
+                <prop key="directive.foreach.counter.name">velocityCount</prop>
+                <prop key="directive.foreach.counter.initial.value">1</prop>
+                <prop key="velocimacro.library.autoreload">true</prop>
+                <prop key="velocimacro.library">macro/macro.vm</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- spring 视图解析器配置 -->
+    <bean id="viewResolver" class="com.jerhe.common.base.resolver.MyMultipleViewResolver">
+        <property name="defaultKey" value="jsp" />
+        <property name="resolvers">
+            <map>
+                <entry key="jsp">
+                    <!-- jsp视图解析器 -->
+                    <bean  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                        <property name="prefix" value="/WEB-INF/jsp/" />
+                        <property name="suffix" value=".jsp" />
+                    </bean>
+                </entry>
+                <entry key="vm">
+                    <!-- velocity视图解析器 -->
+                    <bean class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+                        <property name="exposeRequestAttributes" value="true" />
+                        <property name="toolboxConfigLocation" value="/WEB-INF/vtl/toolbox.xml"/>
+                        <property name="requestContextAttribute" value="rc" />
+                        <property name="dateToolAttribute" value="dateTool" />
+                        <property name="numberToolAttribute" value="numberTool" />
+                        <property name="contentType" value="text/html;charset=UTF-8" />
+                        <property name="prefix" value="" />
+                        <property name="suffix" value=".vm" />
+                        <property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityToolbox2View" />
+                    </bean>
+                </entry>
+            </map>
+        </property>
     </bean>
 
     <!-- 上传限制 -->

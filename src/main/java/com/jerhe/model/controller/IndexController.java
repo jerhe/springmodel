@@ -2,7 +2,6 @@ package com.jerhe.model.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.jerhe.common.base.BaseController;
-import com.jerhe.model.entity.Test;
 import com.jerhe.model.service.TestService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +32,7 @@ public class IndexController extends BaseController {
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public ModelAndView home(){
-        ModelAndView mv =new ModelAndView("index");
+        ModelAndView mv =new ModelAndView("index.vm");
         //方式1 mybatis
         List<Map<String,Object>> test= (List<Map<String, Object>>) testService.getAll();
         //List<Test> test =testService.getAllHibernate();

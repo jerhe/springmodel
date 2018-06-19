@@ -1,0 +1,89 @@
+.toast__wraper___23El_ {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99; }
+  .toast__wraper___23El_ .toast__inner___1dhzQ {
+    background-color: rgba(0, 0, 0, 0.6);
+    line-height: 25px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px; }
+  .toast__wraper___23El_ i {
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    position: relative;
+    overflow: visible;
+    margin-right: 8px;
+    margin-left: 0;
+    font-size: 20px;
+    vertical-align: middle; }
+    .toast__wraper___23El_ i:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: -23px;
+      -webkit-transform: scale(0.25);
+              transform: scale(0.25);
+      top: -34px; }
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "\5FAE\8F6F\96C5\9ED1"; }
+
+img {
+  width: 100%; }
+
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: 0.93333rem;
+  color: #01a8f8;
+  margin-top: 0.74667rem; }
+
+.car-font {
+  margin-left: 0.89333rem;
+  font-size: 0.4rem;
+  color: #999;
+  margin-top: 1.16rem;
+  margin-bottom: 0.4rem; }
+
+.car-plate {
+  text-indent: 0.61333rem;
+  display: block;
+  width: 9.34667rem;
+  margin: 0 auto;
+  height: 1.30667rem;
+  line-height: 1.30667rem;
+  border: 0.01333rem solid #01a8f8;
+  color: #666;
+  font-size: 0.53333rem;
+  border-radius: 0.13333rem; }
+
+.confirm {
+  display: block;
+  width: 9.34667rem;
+  margin: 0 auto;
+  margin-top: 1.52rem;
+  height: 1.30667rem;
+  line-height: 1.30667rem;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 0.13333rem;
+  background-color: #01a8f8;
+  color: #fff;
+  font-size: 0.53333rem; }
+
+.foot {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 0.32rem;
+  color: #01a8f8;
+  bottom: 0.34667rem; }

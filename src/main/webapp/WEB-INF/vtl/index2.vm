@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    #parse("common/meta.vm")
+    <title>测试</title>
+    <link rel="stylesheet" href="$contextPath/resources/styles/h5/account/login.min.css">
+</head>
+<body>
+    <div class="wraper">
+
+    </div>
+    #parse("common/lib.vm")
+    <script>
+        $(function () {
+            $('body').on('click', '.authbtn',function(){//确认授权
+
+            });
+
+            $('body').on('click', '.getOpenId',function(){//获取openId
+
+            });
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+#set($contextPath = $rc.contextPath)
+<base href="$contextPath/">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- basic styles -->
+<link rel="stylesheet" type="text/css" href="$contextPath/resources/vendor/ace/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="$contextPath/resources/vendor/ace/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" type="text/css" href="$contextPath/resources/vendor/ace/css/font-awesome4.5.min.css" />
+<!-- page specific plugin styles -->
+<!-- 下拉框-->
+<link rel="stylesheet" type="text/css" href="$contextPath/resources/vendor/ace/css/chosen.css" />
+<!-- ace styles -->
+<link rel="stylesheet" type="text/css" href="$contextPath/resources/vendor/ace/assets/css/ace.css">
+<link rel="stylesheet" type="text/css" href="$contextPath/resources/vendor/ace/css/ace.min.css" />
+<link rel="stylesheet" type="text/css" href="$contextPath/resources/vendor/ace/css/ace.min-new.css" /><!-- 新的按钮样式 -->
+<link rel="stylesheet" type="text/css" href="$contextPath/resources/vendor/ace/css/ace-responsive.min.css" />
+<link rel="stylesheet" type="text/css" href="$contextPath/resources/vendor/ace/css/datepicker.css" /><!-- 日期框 -->
+<link rel="stylesheet" href="$contextPath/resources/vendor/ace/js/date-time/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" type="text/css" href="$contextPath/resources/vendor/webuploader/webuploader.css">
+
+<!-- 自定义全局样式 -->
+<link rel="stylesheet" href="$contextPath/resources/styles/ace-reset.css">
+<link rel="stylesheet" href="$contextPath/resources/styles/validate.css">
+<link rel="stylesheet" href="$contextPath/resources/styles/common.css">
+<link rel="stylesheet" href="$contextPath/resources/styles/form.css">
+<script type="text/javascript" src="$contextPath/resources/js/factory.js"></script>
+<!-- 自定义皮肤 -->
+<link rel="stylesheet" href="$contextPath/resources/styles/cus-skins.css" />
+<!--引入弹窗组件start-->
+<script type="text/javascript" src="$contextPath/resources/vendor/jquery.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/jquery-browser-plugin/dist/jquery.browser.min.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/jquery.form.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/jquery.validate.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/jquery.validate.ext.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/messages_cn.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/underscore.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/plugins/attention/zDialog/zDrag.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/plugins/attention/zDialog/zDialog.js"></script>
+<!--引入弹窗组件end-->
+<script type="text/javascript" src="$contextPath/resources/vendor/ace/js/jquery.tips.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/ace/js/chosen.jquery.min.js"></script><!-- 下拉框 -->
+<script type="text/javascript" src="$contextPath/resources/vendor/ace/js/bootstrap-datepicker.min.js"></script><!-- 日期框 -->
+<script type="text/javascript" src="$contextPath/resources/vendor/ace/js/bootstrap-timepicker.min.js"></script><!-- 日期框 -->
+<script type="text/javascript" src="$contextPath/resources/vendor/ace/js/date-time/daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/ace/js/date-time/daterangepicker/daterangepicker.js"></script>
+
+<script type="text/javascript" src="$contextPath/resources/vendor/ace/js/bootbox.min.js"></script><!-- 确认窗口 -->
+<script type="text/javascript" src="$contextPath/resources/vendor/ace/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/ace/assets/js/ace/elements.fileinput.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/ace/assets/js/ace/ace.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="$contextPath/resources/js/listener.js"></script>
+<script type="text/javascript" src="$contextPath/resources/js/json2.js"></script>
+
+<!--相册-->
+<script type="text/javascript" src="$contextPath/resources/vendor/jquery.fancybox-1.3.4/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="$contextPath/resources/vendor/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js"></script>
+<link rel="stylesheet" href="$contextPath/resources/vendor/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+<script src="$contextPath/resources/vendor/handlebars/handlebars-v4.0.5.js"></script>
+
+<link rel="stylesheet" href="$contextPath/resources/vendor/toast/jquery.toast.css" type="text/css" media="screen" />
+<script type="text/javascript" src="$contextPath/resources/vendor/toast/jquery.toast.js"></script>
+<script type="text/javascript" src="$contextPath/resources/js/myToast.js"></script>
+<script type="text/javascript" src="$contextPath/resources/js/xmrbiAjax.js"></script>
+<script type="text/javascript" src="$contextPath/resources/js/common.js"></script>
+
+<script>
+	var contextPath = "$contextPath";
+	var imgHost = "$imgHost";
+	$(function(){
+		typeof(top.hangge) === "function" && top.hangge();
+		//初始化相册
+		$(".fanbox-wrap").fancybox({
+			'transitionIn'		: 'none',
+			'transitionOut'		: 'none',
+			'titlePosition' 	: 'over',
+			'titleFormat'       : function(title, currentArray, currentIndex, currentOpts) {
+			    var url = currentOpts.href;
+				var pattern = /.*T(\d*)P(\d*)\.jpg$/;
+				var match = url.match(pattern);
+				var strTitle = '';
+				if(match){
+					strTitle = '<span id="fancybox-title-over">' + title + ' 第' + match[2] + '页 共' + match[1] + '页</span>';
+				}else{
+					strTitle = '<span id="fancybox-title-over">'+title+'</span>';
+				}
+			    return strTitle;
+			}
+		});
+	});
+</script>
