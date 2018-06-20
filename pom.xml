@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.jerhe</groupId>
-  <artifactId>springmodel</artifactId>
+  <artifactId>shoes</artifactId>
   <version>1.0.0.0</version>
   <packaging>war</packaging>
 
-  <name>springmodel Maven Webapp</name>
+  <name>shoes Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -205,7 +205,7 @@
   </dependencies>
 
   <build>
-    <finalName>springmodel</finalName>
+    <finalName>shoes</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
