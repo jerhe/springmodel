@@ -3,7 +3,6 @@
 <head>
     #parse("common/meta.vm")
     <title>测试</title>
-    <link rel="stylesheet" href="$contextPath/resources/styles/h5/account/login.min.css">
 </head>
 <body>
     <div class="wraper">

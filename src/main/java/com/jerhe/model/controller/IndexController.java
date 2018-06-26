@@ -32,7 +32,7 @@ public class IndexController extends BaseController {
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public ModelAndView home(){
-        ModelAndView mv =new ModelAndView("index.vm");
+        ModelAndView mv =new ModelAndView("index2.vm");
         //方式1 mybatis
         List<Map<String,Object>> test= (List<Map<String, Object>>) testService.getAll();
         //List<Test> test =testService.getAllHibernate();
