@@ -82,7 +82,7 @@
                 </entry>
                 <entry key="vm">
                     <!-- velocity视图解析器 -->
-                    <bean class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+                     <bean class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
                         <property name="exposeRequestAttributes" value="true" />
                         <property name="toolboxConfigLocation" value="/WEB-INF/vtl/toolbox.xml"/>
                         <property name="requestContextAttribute" value="rc" />

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+  http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <rabbit:connection-factory id="connectionFactory" host="${mq.host.ip}" virtual-host="/" username="${mq.user.name}"
+                               password="${mq.user.passwd}" port="${mq.host.port}"
+                               channel-cache-size="${mq.channel.cache.size}"/>
+
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <!-- pos 交易队列id-->
+    <rabbit:queue name="${mq.jerhe.queue}" durable="true"/>
+    <!--<rabbit:queue name="${mq.ecard.message.queue.id}" durable="true"/>-->
+    <!-- ********** 利用rabbitMQ死信队列，实现延时（定时）消息 ********** -->
+    <rabbit:topic-exchange name="xmbus.topic.exchange" durable="true">
+        <rabbit:bindings>
+            <rabbit:binding queue="${mq.jerhe.queue}" pattern="mq.jerhe.message"/>
+            <!--<rabbit:binding queue="${mq.ecard.message.queue.id}" pattern="mq.ecard.message"/>-->
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+    <rabbit:template id="amqpTemplate" connection-factory="connectionFactory" exchange="xmbus.topic.exchange"
+                     message-converter="jsonMessageConverter" retry-template="retryTemplate"/>
+
+    <bean id="retryTemplate" class="org.springframework.retry.support.RetryTemplate">
+        <property name="retryPolicy">
+            <bean class="org.springframework.retry.policy.SimpleRetryPolicy">
+                <property name="maxAttempts" value="5"></property>
+            </bean>
+        </property>
+        <property name="backOffPolicy">
+            <bean class="org.springframework.retry.backoff.ExponentialBackOffPolicy">
+                <property name="initialInterval" value="500"/>
+                <property name="multiplier" value="6.0"/>
+                <property name="maxInterval" value="10000"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter"/>
+
+    <bean id="baseMsgProducer" class="com.jerhe.common.msg.mq.BaseMsgProducer">
+        <property name="amqpTemplate" ref="amqpTemplate"/>
+        <property name="taskExecutor" ref="mqExecutorService"/>
+    </bean>
+
+
+    <bean id="mqExecutorService" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <!-- 线程池活跃的线程数 -->
+        <property name="corePoolSize" value="${mqissue.thread.corePoolSize}"/>
+        <!-- 线程池最大活跃的线程数 -->
+        <property name="maxPoolSize" value="${mqissue.thread.maxPoolSize}"/>
+        <!-- 队列的最大容量 -->
+        <property name="queueCapacity" value="${mqissue.thread.queueCapacity}"/>
+    </bean>
+
+</beans>
