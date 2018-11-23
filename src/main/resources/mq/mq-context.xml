@@ -19,7 +19,7 @@
     <!-- ********** 利用rabbitMQ死信队列，实现延时（定时）消息 ********** -->
     <rabbit:topic-exchange name="xmbus.topic.exchange" durable="true">
         <rabbit:bindings>
-            <rabbit:binding queue="${mq.jerhe.queue}" pattern="mq.jerhe.message"/>
+            <rabbit:binding queue="${mq.jerhe.queue}" pattern="mq.jerhe.queue"/>
             <!--<rabbit:binding queue="${mq.ecard.message.queue.id}" pattern="mq.ecard.message"/>-->
         </rabbit:bindings>
     </rabbit:topic-exchange>

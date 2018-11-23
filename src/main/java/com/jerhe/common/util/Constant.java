@@ -4,7 +4,7 @@ public class Constant {
 
 
 	public static final String CHARSET="utf-8";
-	public  static final String MQ_TOPIC_EXCHANGE = "jerhe.topic.exchange";
+	public  static final String MQ_TOPIC_EXCHANGE = "xmbus.topic.exchange";
 
 
 }

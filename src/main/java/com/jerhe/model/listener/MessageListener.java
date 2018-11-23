@@ -1,5 +1,6 @@
 package com.jerhe.model.listener;
 
+import com.alibaba.fastjson.JSON;
 import com.jerhe.common.listener.AbstractMessageListener;
 import com.jerhe.common.msg.BusMessageNotifier;
 import com.jerhe.model.entity.msg.MsgOrderMsg;
@@ -24,6 +25,7 @@ public class MessageListener extends AbstractMessageListener {
 
     @Override
     public void handle(Message message) {
+        logger.info("jerhe消息队列：{}", JSON.toJSONString(message));
         Object targetBean = messageConverter.fromMessage(message);
         if (!(targetBean instanceof BusMessageNotifier)) {
             logger.info("消息内容不对, 类型为{}", targetBean.getClass().getName());

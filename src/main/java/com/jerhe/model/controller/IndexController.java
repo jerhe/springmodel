@@ -47,8 +47,10 @@ public class IndexController extends BaseController {
 
         //test队列
         MqMessage mqMessage = MqMessage.topicMessage(MqTopicEnum.MQ_JERHE);
+        mqMessage.setQueueName(MqTopicEnum.MQ_JERHE.name());
         mqMessage.setContent("我是jerhe");
-        baseMsgProducer.sendTopicMsg(mqMessage, 50000L);
+        baseMsgProducer.sendTopicMsg(mqMessage,5000L);
+        logger.info("send jerhe消息");
         return mv;
     }
 }
