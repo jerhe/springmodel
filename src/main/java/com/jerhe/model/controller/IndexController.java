@@ -1,14 +1,19 @@
 package com.jerhe.model.controller;
 
+import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.ExcelWriter;
+import com.alibaba.excel.metadata.Font;
 import com.alibaba.excel.metadata.Sheet;
+import com.alibaba.excel.metadata.TableStyle;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.fastjson.JSON;
 import com.jerhe.common.base.BaseController;
 import com.jerhe.common.enums.MqTopicEnum;
 import com.jerhe.common.msg.mq.BaseMsgProducer;
 import com.jerhe.common.msg.mq.MqMessage;
+import com.jerhe.common.pojo.dto.TestDTO;
 import com.jerhe.model.service.TestService;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,8 +22,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,21 +73,41 @@ public class IndexController extends BaseController {
 
     @RequestMapping(value = "/excel")
     @ResponseBody
-    public void getExcel(HttpServletResponse response) throws IOException {
-        //方式1 mybatis
-        List<Map<String, Object>> test = (List<Map<String, Object>>) testService.getAll();
+    public void getExcel(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        ServletOutputStream out = response.getOutputStream();
-        ExcelWriter writer = new ExcelWriter(out, ExcelTypeEnum.XLSX, true);
-        String fileName = new String(("Test " + new SimpleDateFormat("yyyy-MM-dd").format(new Date()))
-                .getBytes(), "UTF-8");
-        Sheet sheet1 = new Sheet(1, 0);
-        sheet1.setSheetName("第一个sheet");
-        writer.write0(getListString(), sheet1);
-        writer.finish();
+        String fileName = new String((new SimpleDateFormat("yyyy-MM-dd").format(new Date()))
+                .getBytes(), "utf-8");
         response.setContentType("multipart/form-data");
         response.setCharacterEncoding("utf-8");
         response.setHeader("Content-disposition", "attachment;filename="+fileName+".xlsx");
+
+        List<TestDTO> dtoList = (List<TestDTO>) testService.getAll();
+        OutputStream out = response.getOutputStream();
+        ExcelWriter writer = EasyExcelFactory.getWriter(out,ExcelTypeEnum.XLSX,true);
+        Sheet sheet = new Sheet(1, 2, TestDTO.class);
+        //sheet2.setTableStyle(createTableStyle());
+        //sheet2.setStartRow(20);
+        writer.write(dtoList, sheet);
+        writer.finish();
         out.flush();
+        out.close();
+    }
+
+    private static TableStyle createTableStyle() {
+        TableStyle tableStyle = new TableStyle();
+        Font headFont = new Font();
+        headFont.setBold(true);
+        headFont.setFontHeightInPoints((short)22);
+        headFont.setFontName("楷体");
+        tableStyle.setTableHeadFont(headFont);
+        tableStyle.setTableHeadBackGroundColor(IndexedColors.BLUE);
+
+        Font contentFont = new Font();
+        contentFont.setBold(true);
+        contentFont.setFontHeightInPoints((short)22);
+        contentFont.setFontName("黑体");
+        tableStyle.setTableContentFont(contentFont);
+        tableStyle.setTableContentBackGroundColor(IndexedColors.GREEN);
+        return tableStyle;
     }
 }

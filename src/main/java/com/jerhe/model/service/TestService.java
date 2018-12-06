@@ -12,7 +12,7 @@ import java.util.List;
 public class TestService extends BaseService {
 
     public Object getAll(){
-        return dao.findForList("com.jerhe.model.mybatis.Test.getAllTest",null);
+        return dao.findForListX("com.jerhe.model.TestMapper.getAllTest",null);
     }
 
     @Resource

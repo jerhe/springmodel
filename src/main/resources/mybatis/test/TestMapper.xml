@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jerhe.model.TestMapper">
+
+    <resultMap id="testDTO" type="com.jerhe.common.pojo.dto.TestDTO">
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+    </resultMap>
+    <select id="getAllTest" parameterType="map" resultMap="testDTO">
+		SELECT
+		aa.title "title",
+		aa.content "content"
+		FROM
+			test aa
+	</select>
+
+</mapper>
