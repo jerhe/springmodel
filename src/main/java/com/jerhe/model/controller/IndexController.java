@@ -9,6 +9,9 @@ import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.fastjson.JSON;
 import com.jerhe.common.base.BaseController;
 import com.jerhe.common.enums.MqTopicEnum;
+import com.jerhe.common.id.generator.IdGeneratorHolder;
+import com.jerhe.common.lock.LockCallbackOperation;
+import com.jerhe.common.lock.redis.RedisDistributedLockTemplate;
 import com.jerhe.common.msg.mq.BaseMsgProducer;
 import com.jerhe.common.msg.mq.MqMessage;
 import com.jerhe.common.pojo.dto.TestDTO;
@@ -21,12 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,9 +47,26 @@ public class IndexController extends BaseController {
     private TestService testService;
     @Resource
     private BaseMsgProducer baseMsgProducer;
+    @Resource
+    private RedisDistributedLockTemplate redisLock;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @ResponseBody
     public String index() {
+        String id = IdGeneratorHolder.getNextId();
+        redisLock.execute("11",10000, new LockCallbackOperation() {
+            @Override
+            public Object onGetLock() throws Exception {
+                Thread.sleep(1000 * 8);
+                System.out.println("111111111111");
+                return null;
+            }
+
+            @Override
+            public Object onTimeout() throws Exception {
+                return null;
+            }
+        });
         return "index";
     }
 

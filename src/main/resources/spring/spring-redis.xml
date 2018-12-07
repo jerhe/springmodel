@@ -23,4 +23,9 @@
 		<property name="connectionFactory" ref="jedisConnectionFactory" />
 		<property name="keySerializer" ref="stringSerializer" />
 	</bean>
+
+	<!-- redis 分布式锁 -->
+	<bean id="redisDistributedLockTemplate" class="com.jerhe.common.lock.redis.RedisDistributedLockTemplate">
+		<constructor-arg name="redisTemplate" ref="redisTemplate"/>
+	</bean>
 </beans>	
