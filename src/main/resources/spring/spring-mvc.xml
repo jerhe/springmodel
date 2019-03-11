@@ -46,6 +46,14 @@
     <!-- 静态资源配置 -->
     <mvc:resources mapping="/resources/**" location="/static/"/>
 
+    <!--访问拦截-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.jerhe.model.interceptor.BindHandlerInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!-- 对模型视图名称的解析,即在模型视图名称添加前后缀 -->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>

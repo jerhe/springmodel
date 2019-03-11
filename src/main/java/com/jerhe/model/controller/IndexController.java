@@ -7,6 +7,7 @@ import com.alibaba.excel.metadata.Sheet;
 import com.alibaba.excel.metadata.TableStyle;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.fastjson.JSON;
+import com.jerhe.common.annotation.Bind;
 import com.jerhe.common.base.BaseController;
 import com.jerhe.common.enums.MqTopicEnum;
 import com.jerhe.common.id.generator.IdGeneratorHolder;
@@ -70,6 +71,7 @@ public class IndexController extends BaseController {
         return "index";
     }
 
+    @Bind
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView("index.vm");

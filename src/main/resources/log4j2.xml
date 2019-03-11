@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="60">
+	<Appenders>
+		<!--  控制台输出 -->
+		<Console name="Console" target="SYSTEM_OUT">
+			  <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} %p %t [%l] %m%n</Pattern>
+            </PatternLayout>
+		</Console>
+		
+		<!--  每日一文件，最大200MB新增文件
+		<RollingFile name="RollingFile" fileName="${sys:catalina.base}/logs/iparking/ietc-api-app.log"
+			filePattern="${sys:catalina.base}/logs/iparking/ietc-api-app-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss:SSS} %p %t [%l] %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+			<DefaultRolloverStrategy fileIndex="max" max="20" />
+		</RollingFile >-->
+	</Appenders>
+	
+	<Loggers>
+			<Logger name="com.alibaba.dubbo.registry.zookeeper" level="WARN"/>
+		    <Logger name="com.alibaba.dubbo.monitor.dubbo.DubboMonitor" level="WARN"/>
+		    <Logger name="org.hibernate.SQL" level="WARN" />
+		    <Logger name="com.xmrbi.ilife" level="DEBUG"/>
+		    <Logger name="org.apache" level="WARN"/>
+		    <Logger name="org.springframework" level="WARN"/>
+     	   <Logger name="com.xmrbi.ietc.framework.web.spring.view" level="DEBUG"/>
+		  <!-- 开发使用 -->
+		<Root level="debug">
+			<AppenderRef ref="Console"/>
+		</Root>
+		
+		  <!-- 服务器使用 -->
+		<!-- <Root level="info">
+			<AppenderRef ref="RollingFile"/>
+		</Root> -->
+	</Loggers>
+</Configuration> 
+

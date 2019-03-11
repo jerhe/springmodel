@@ -17,8 +17,6 @@ import javax.annotation.Resource;
 @Component
 public abstract class AbstractMessageListener implements ChannelAwareMessageListener {
 	private static final Logger logger = LogManager.getLogger(AbstractMessageListener.class);
-	@Resource
-	protected MessageConverter messageConverter;
 
 	@Override
 	public void onMessage(Message message, Channel channel) throws Exception {
